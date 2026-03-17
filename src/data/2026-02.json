@@ -1,0 +1,88 @@
+{
+  "month": "2026-02",
+  "title": "2026년 2월 AI 트렌드 리포트",
+  "generated_at": "2026-03-17",
+  "source": "https://huggingface.co/papers/month/2026-02",
+  "papers": [
+    {
+      "rank": 1,
+      "title": "A Very Big Video Reasoning Suite",
+      "upvotes": 514,
+      "paper_url": "https://huggingface.co/papers/2602.20159",
+      "arxiv_url": "https://arxiv.org/abs/2602.20159",
+      "authors": ["Ruisi Wang", "Juyi Lin", "Ran Ji", "Yilun Du", "Ziming Liu", "Bo Li", "Dahua Lin", "Ziwei Liu"],
+      "organization": "Multi-institutional (50+ researchers)",
+      "tags": ["비디오 추론", "벤치마크", "대규모 데이터셋"],
+      "summary": {
+        "what": "VBVR(A Very Big Video Reasoning Suite)은 AI의 비디오 추론 능력을 체계적으로 평가하기 위한 대규모 벤치마크입니다. 201만 5천 장의 이미지와 100만 7,500개의 비디오 클립으로 구성되어, 기존 데이터셋 대비 약 1,000배 큰 규모입니다. 200개의 추론 과제를 인지 아키텍처 분류 체계로 조직화하여, AI가 비디오를 얼마나 '이해'하는지를 다각도로 측정합니다.",
+        "tech": "VBVR은 인간의 인지 능력을 5가지 축으로 분류하여 비디오 추론을 평가합니다:\n\n1) **지각(Perception)**: 감각 입력에서 형태를 추출하는 능력\n2) **변환(Transformation)**: 멘탈 모델을 조작·합성하는 능력\n3) **공간성(Spatiality)**: 기하학적 관계와 공간 추론\n4) **추상화(Abstraction)**: 개별 경험에서 일반화하는 능력\n5) **지식(Knowledge)**: 학습된 또는 내재된 명제적 지식\n\n평가 프레임워크인 VBVR-Bench는 규칙 기반 자동 채점기를 사용하며, 인간 평가와의 상관계수(Spearman ρ)가 0.9 이상으로 높은 신뢰도를 보입니다. 스케일링 실험에서는 학습 데이터가 늘어날수록 본 적 없는 추론 과제에 대한 일반화 능력이 자연발생적으로 나타나는 'emergent generalization'을 확인했습니다.",
+        "progress": "기존 비디오 이해 벤치마크(MVBench, Video-MME 등)는 수천 개 수준의 소규모 데이터셋에 제한적인 과제 유형만 다뤘습니다:\n\n• 데이터 규모: 기존 최대 약 8,000개 → VBVR 100만+ (1,000배)\n• 과제 유형: 기존 69개 → VBVR 200개\n• 최고 성능: VBVR-Wan2.2(학습된 모델) 0.685, Sora 2(상용 최고) 0.546, 인간 0.974\n• 여전히 인간과 약 30%의 성능 격차가 존재하며, 도메인 내→외 일반화에서도 15% 갭이 있어 비디오 추론이 아직 해결되지 않은 난제임을 보여줍니다.",
+        "investment": "비디오 이해/추론은 AI의 다음 프론티어로 꼽히는 영역입니다:\n\n• **벤치마크의 전략적 가치**: AI 분야에서 벤치마크를 만드는 것은 '경기장을 소유하는 것'과 같습니다. VBVR이 표준이 되면, 모든 비디오 AI 모델이 이 기준으로 평가받게 됩니다. 50명 이상의 다기관 연구자가 참여한 점은 이 벤치마크의 영향력을 시사\n• **비디오 AI의 성숙도 측정 도구**: 자율주행, 보안 감시, 의료 영상, 스포츠 분석 등 비디오 추론이 필수인 산업에서, 현재 AI 기술의 한계(인간 대비 30% 격차)를 정량적으로 보여줌. 이 격차가 좁혀지는 속도가 곧 해당 산업의 AI 도입 시점을 결정\n• **데이터 스케일링의 중요성 재확인**: 학습 데이터가 늘어날수록 새로운 추론 능력이 창발되는 결과는, 고품질 비디오 데이터를 보유한 기업(YouTube/Google, TikTok/ByteDance)의 구조적 우위를 시사"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "OPUS: Towards Efficient and Principled Data Selection in LLM Pre-training in Every Iteration",
+      "upvotes": 347,
+      "paper_url": "https://huggingface.co/papers/2602.05400",
+      "arxiv_url": "https://arxiv.org/abs/2602.05400",
+      "authors": ["Shaobo Wang", "Xuan Ouyang", "Tianyi Xu", "Yuzheng Hu", "Dayiheng Liu", "Linfeng Zhang"],
+      "organization": "SJTU / Alibaba Qwen Team / UW-Madison / UIUC / Mila",
+      "tags": ["LLM 학습", "데이터 선별", "효율성"],
+      "summary": {
+        "what": "OPUS(Optimizer-induced Projected Utility Selection)는 LLM 사전학습 시 매 반복(iteration)마다 가장 유용한 학습 데이터를 동적으로 선별하는 프레임워크입니다. 고품질 공개 텍스트 데이터가 고갈되는 'Data Wall' 문제를 해결하기 위해, 같은 데이터에서 더 많은 것을 배우는 '데이터 효율성'에 초점을 맞춥니다.",
+        "tech": "기존 데이터 선별 방식은 학습 전에 한 번 필터링하는 정적(static) 방식이거나, 옵티마이저의 특성을 무시하는 방법이었습니다. OPUS는 근본적으로 다른 접근을 합니다:\n\n1) **옵티마이저 인식 유틸리티**: 현대 옵티마이저(AdamW, Muon)가 실제로 파라미터를 어떻게 업데이트하는지를 수학적으로 모델링하여, 각 데이터 샘플이 모델 개선에 기여하는 정도를 정확히 추정\n2) **Ghost + CountSketch 기법**: 전체 그래디언트를 물리적으로 계산하지 않고도 유틸리티를 추정하는 압축 기법. 추가 연산 오버헤드가 단 4.7%에 불과\n3) **볼츠만 샘플링**: 상위 데이터만 탐욕적으로 선택하는 대신, 확률적으로 선택하여 데이터 다양성을 유지\n\n결과: GPT-2 XL에서 30B 토큰으로 200B 토큰 전체 학습과 동등한 성능 달성. Qwen3-8B에서는 0.5B 토큰으로 3B 토큰 학습 성능 달성(6배 효율).",
+        "progress": "기존 데이터 선별 방법(FineWeb-Edu, DCLM 등)은 학습 전 한 번 필터링하는 정적 방식이라 학습 중 모델 상태 변화를 반영하지 못했습니다:\n\n• 최초로 옵티마이저 기하학(geometry)을 데이터 선별에 반영\n• 6배 데이터 효율 달성 (0.5B → 3B 토큰 동등 성능)\n• 10개 벤치마크 평균 2.2% 정확도 향상 + 8배 연산 절감\n• Alibaba Qwen 팀이 공동 참여하여, 실제 산업 규모 LLM 학습에의 적용 가능성을 입증",
+        "investment": "LLM 학습 비용은 AI 산업의 가장 큰 비용 항목이며, 데이터 효율성은 이를 직접적으로 줄여줍니다:\n\n• **학습 비용 6배 절감의 파급력**: GPT-5급 모델 학습에 수억 달러가 드는 상황에서, 6배 효율 개선은 학습 비용을 수천만 달러 단위로 절감할 수 있음. 모든 AI 기업에 즉시 적용 가능한 기술\n• **Data Wall 문제의 현실적 해법**: 인터넷의 고품질 텍스트가 고갈되면서, '더 많은 데이터'가 아닌 '더 똑똑한 데이터 사용'이 경쟁력의 핵심이 됨. OPUS는 이 방향의 가장 앞선 연구\n• **Alibaba Qwen 팀의 참여**: Qwen3-8B에서 검증되었다는 것은 단순 학술 연구가 아닌, 실제 상용 모델 학습에 적용될 가능성이 높다는 의미. 학습 인프라 기업들의 채택 속도 주목"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
+      "upvotes": 315,
+      "paper_url": "https://huggingface.co/papers/2602.00919",
+      "arxiv_url": "https://arxiv.org/abs/2602.00919",
+      "authors": ["Green-VLA Team"],
+      "organization": "Multi-institutional",
+      "tags": ["로보틱스", "VLA 모델", "범용 로봇"],
+      "summary": {
+        "what": "Green-VLA는 범용 로봇을 위한 비전-언어-행동(Vision-Language-Action) 모델입니다. 자연어 지시를 이해하고, 카메라 영상을 보고, 로봇 팔을 직접 제어하는 end-to-end 프레임워크로, 다양한 환경·물체·작업에 적응할 수 있는 '제너럴리스트 로봇'을 목표로 합니다.",
+        "tech": "VLA 모델은 대규모 언어 모델(LLM)의 성공을 로보틱스로 확장하는 패러다임입니다:\n\n1) **비전(Vision)**: 카메라로 환경을 인식\n2) **언어(Language)**: '빨간 컵을 집어서 테이블 위에 놓아줘' 같은 자연어 지시를 이해\n3) **행동(Action)**: 로봇 관절의 움직임을 직접 출력\n\nGreen-VLA는 '단계적 학습(Staged Training)' 전략을 핵심으로 합니다. 한 번에 모든 것을 학습시키는 대신, 지각→추론→행동을 단계별로 학습하여 각 능력이 안정적으로 구축된 후 통합합니다. 이를 통해 π₀, Gemini Robotics, GR00T N1 등 기존 VLA 모델들이 겪던 학습 불안정성과 일반화 문제를 완화합니다.",
+        "progress": "VLA 모델은 2025년부터 급부상한 로보틱스의 핵심 연구 방향입니다:\n\n• 기존 VLA(π₀, GR00T N1 등)는 특정 환경에서만 작동하거나, 긴 작업 시퀀스에서 실패하는 한계가 있었음\n• Green-VLA의 단계적 학습은 학습 효율성과 일반화 능력을 동시에 개선\n• '범용 로봇' 비전에 한 걸음 더 다가간 결과로, 조작(manipulation), 추론, 평가 벤치마크에서 기존 대비 향상된 성능을 보고",
+        "investment": "로보틱스 AI는 2026년 가장 큰 투자 기회 중 하나입니다:\n\n• **Physical AI 시장의 핵심 기술**: NVIDIA Jensen Huang이 '다음 AI 물결은 Physical AI'라 언급한 바와 같이, 로봇이 현실 세계를 이해하고 조작하는 기술은 제조, 물류, 가정 서비스 등 수조 달러 시장의 기반\n• **범용 로봇의 가능성**: 기존 산업용 로봇은 한 가지 작업만 수행하도록 프로그래밍되었으나, VLA 모델이 성숙하면 하나의 로봇이 다양한 작업을 수행하는 시대가 열림. 로봇 하드웨어의 가치가 소프트웨어 업데이트로 지속 상승\n• **Figure, 1X Technologies 등 휴머노이드 스타트업과의 시너지**: VLA 모델은 휴머노이드 로봇의 '두뇌' 역할. 로봇 하드웨어 기업들이 이 기술을 채택하면 상용화가 가속화될 전망"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
+      "upvotes": 282,
+      "paper_url": "https://huggingface.co/papers/2602.08222",
+      "arxiv_url": "https://arxiv.org/abs/2602.08222",
+      "authors": ["Zehao Chen", "Gongxun Li", "Tianxiang Ai", "Yifei Li", "Deqing Wang", "Yikun Ban"],
+      "organization": "Independent Research",
+      "tags": ["포스트 트레이닝", "강화학습", "LLM 최적화"],
+      "summary": {
+        "what": "WMSS(Weak agents can Make Strong agents Stronger)는 이미 충분히 강력한 LLM을 더 강하게 만드는 새로운 포스트 트레이닝 기법입니다. 모델이 학습 과정 중 거쳐온 '약한 상태(weak checkpoint)'를 활용하여, 강한 모델이 자신의 과거로부터 배우도록 합니다.",
+        "tech": "LLM 포스트 트레이닝에서 가장 큰 문제는 '포화(saturation)'입니다. 모델이 이미 높은 확신도를 가지면, 추가 학습의 효과가 급감합니다. WMSS는 이를 역발상으로 해결합니다:\n\n1) **엔트로피 동역학 분석**: 모델의 학습 이력에서 '확신도가 낮았던 순간(높은 엔트로피)'을 찾아냄. 이 지점들이 '회복 가능한 학습 갭(recoverable learning gap)'\n2) **보상 학습(Compensatory Learning)**: 약한 체크포인트가 틀렸지만 강한 모델은 맞추는 영역을 식별하여, 그 차이를 강화 신호로 활용\n3) **추론 비용 제로**: 학습 단계에서만 약한 모델을 참조하고, 실제 서비스 시에는 강한 모델만 사용하므로 추론 비용이 전혀 증가하지 않음\n\n비유하자면, 프로 운동선수가 자신의 초보 시절 영상을 분석하여 기본기를 재점검하는 것과 유사합니다.",
+        "progress": "기존 포스트 트레이닝 기법(DPO, RLHF, Self-Play 등)은 외부 피드백이나 더 강한 모델에 의존했습니다:\n\n• WMSS는 외부 의존 없이 모델 자체의 학습 이력만으로 개선 가능\n• 수학 추론과 코드 생성 데이터셋에서 효과적 성능 향상을 입증\n• 추론 비용 제로라는 실용적 이점은 상용 배포에서 큰 장점\n• '약한 모델이 강한 모델을 가르칠 수 있다'는 반직관적 결과는 AI 정렬(alignment) 연구에도 시사점을 줌",
+        "investment": "LLM 포스트 트레이닝은 모델 성능을 결정하는 핵심 단계로, 모든 AI 기업의 핵심 관심사입니다:\n\n• **학습 비용 절감**: 외부 데이터나 더 큰 교사 모델 없이 자기 개선이 가능하므로, 포스트 트레이닝 비용을 대폭 줄일 수 있음. 특히 소규모 AI 기업들에게 중요한 기술\n• **모델 성능의 '천장' 돌파 가능성**: LLM 성능이 포화되고 있다는 우려가 있는 가운데, WMSS는 추가 성능 향상의 새로운 경로를 제시. 이 방향이 검증되면 'AI 성능 정체론'에 대한 반론이 됨\n• **AI Safety 연구와의 연결**: '약한 모델이 강한 모델을 개선한다'는 결과는 OpenAI의 'Weak-to-Strong Generalization' 연구와 맥락을 같이하며, 초지능 AI의 정렬 문제 해결에 기여할 수 있는 기초 연구"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "ERNIE 5.0 Technical Report",
+      "upvotes": 263,
+      "paper_url": "https://huggingface.co/papers/2602.04705",
+      "arxiv_url": "https://arxiv.org/abs/2602.04705",
+      "authors": ["Baidu ERNIE Team"],
+      "organization": "Baidu",
+      "tags": ["멀티모달", "파운데이션 모델", "통합 아키텍처"],
+      "summary": {
+        "what": "ERNIE 5.0은 Baidu가 개발한 차세대 파운데이션 모델로, 텍스트·이미지·오디오·비디오를 하나의 자기회귀 프레임워크에서 이해하고 생성하는 네이티브 멀티모달 모델입니다. 기존처럼 언어 모델에 다른 모달리티를 붙이는 방식이 아닌, 처음부터 모든 모달리티를 함께 학습합니다.",
+        "tech": "ERNIE 5.0의 핵심 혁신:\n\n1) **Next-Group-of-Tokens Prediction**: 텍스트(다음 토큰), 이미지(다음 프레임/스팟), 오디오(다음 코덱)를 모두 '다음 토큰 그룹 예측'이라는 단일 목표로 통합. 모든 모달리티가 같은 토큰 공간에서 학습됨\n2) **Ultra-Sparse MoE**: 활성화율 3% 미만의 초희소 MoE 아키텍처에, 모달리티에 무관한(modality-agnostic) 전문가 라우팅 적용. 텍스트 전문가, 이미지 전문가가 따로 있는 것이 아니라, 전문가들이 자연스럽게 역할을 분화\n3) **탄력적 학습(Elastic Training)**: 한 번의 학습으로 다양한 크기의 모델 패밀리를 동시에 생성. 깊이, 폭, 희소성을 조절하여 53.7% 활성 파라미터로도 원본에 근접한 성능 유지\n4) **통합 멀티모달 강화학습(UMRL)**: 텍스트·이미지·오디오·비디오 생성 품질을 하나의 RL 파이프라인으로 동시에 개선",
+        "progress": "기존 멀티모달 모델(GPT-4o, Gemini 등)은 대부분 언어 모델 위에 비전/오디오 모듈을 사후 결합한 구조입니다:\n\n• ERNIE 5.0은 처음부터 모든 모달리티를 동등하게 학습하는 '네이티브 멀티모달' 접근\n• 이미지 생성에서 GPT-Image, Qwen-Image와 대등, 비디오 생성에서 Veo3를 일부 지표에서 상회\n• 음성 인식·합성에서도 경쟁력 있는 성능\n• Elastic Training으로 하나의 학습 실행에서 다양한 크기의 모델을 파생하는 효율적 접근",
+        "investment": "ERNIE 5.0은 Baidu의 AI 전략과 멀티모달 AI 시장의 방향성을 보여줍니다:\n\n• **네이티브 멀티모달의 부상**: '언어 모델 + 부가 모듈' 방식에서 '처음부터 멀티모달' 방식으로의 전환은 업계 전체의 방향. 이 전환을 먼저 완성하는 기업이 다음 세대 AI 플랫폼을 주도할 가능성\n• **Baidu의 AI 포지셔닝**: 검색 시장 점유율 하락에 직면한 Baidu가 AI 파운데이션 모델로 돌파구를 모색. ERNIE 5.0은 Baidu Cloud의 경쟁력을 결정하는 핵심 자산\n• **Elastic Training의 실용적 가치**: 한 번 학습으로 다양한 크기의 모델을 생성하는 기술은, 엣지 디바이스부터 클라우드까지 커버하는 모델 배포 전략에 필수. 이 기술이 보편화되면 AI 모델 배포 비용이 크게 감소"
+      }
+    }
+  ]
+}

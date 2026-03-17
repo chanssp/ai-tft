@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx:*)",
+      "Bash(npm install:*)",
+      "Read(//Users/chanminpark/.nvm/versions/node/**)",
+      "Bash(brew list:*)",
+      "Bash(source:*)",
+      "Bash(open:*)",
+      "Bash(curl:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

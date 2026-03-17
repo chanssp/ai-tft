@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f8f8fa;
+  --color-surface-hover: #f0f0f4;
+  --color-border: #e4e4e7;
+  --color-text: #18181b;
+  --color-text-muted: #71717a;
+  --color-accent: #6366f1;
+  --color-accent-soft: rgba(99, 102, 241, 0.08);
+}
+
+[data-theme="dark"] {
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-surface-hover: #1a1a25;
+  --color-border: #1e1e2e;
+  --color-text: #e4e4e7;
+  --color-text-muted: #71717a;
+  --color-accent: #6366f1;
+  --color-accent-soft: rgba(99, 102, 241, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0a0a0f;
+    --color-surface: #12121a;
+    --color-surface-hover: #1a1a25;
+    --color-border: #1e1e2e;
+    --color-text: #e4e4e7;
+    --color-text-muted: #71717a;
+    --color-accent: #6366f1;
+    --color-accent-soft: rgba(99, 102, 241, 0.1);
+  }
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: "Pretendard Variable";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
