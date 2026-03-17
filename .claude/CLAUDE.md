@@ -3,7 +3,9 @@
 AI trend를 정리하는 웹사이트인데, 논문을 쉽게 해석해주는 사이트야.
 
 아래 URL에서 현재 날짜를 체크하고 매월 1일, 전 월에 대해 monthly로 가장 관심을 많이 받은(upvote 순) 논문/프로젝트 5개를 찾아서 요약을 하는거야.
-https://huggingface.co/papers/month/2026-03
+https://huggingface.co/papers/month/YYYY-MM
+
+중요: 순위 기준은 반드시 "HuggingFace upvote" 수이다. GitHub stars, 댓글 수 등 다른 지표와 혼동하지 말 것. HuggingFace upvote는 보통 수백 단위이고, GitHub stars는 수천~수만 단위로 스케일이 다르다.
 
 어떻게 요약하냐?
 결국 우리는 투자자이기 때문에, 

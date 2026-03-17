@@ -1,23 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
-interface Paper {
-  rank: number;
-  title: string;
-  upvotes: number;
-  paper_url: string;
-  arxiv_url: string;
-  authors: string[];
-  organization: string;
-  tags: string[];
-  summary: {
-    what: string;
-    tech: string;
-    progress: string;
-    investment: string;
-  };
-}
+import { useState, useMemo } from "react";
+import type { Paper } from "@/types";
 
 const sectionConfig = [
   { key: "what" as const, label: "연구 개요", icon: "01" },
@@ -26,8 +10,23 @@ const sectionConfig = [
   { key: "investment" as const, label: "투자 시사점", icon: "04" },
 ];
 
+function extractTakeaway(investment: string): string {
+  // Strip markdown bold markers
+  const clean = investment.replace(/\*\*/g, "");
+  // Get first sentence (up to first period followed by space/newline, or first colon+newline)
+  const match = clean.match(/^(.+?[.:])\s/);
+  if (match) return match[1];
+  // Fallback: first 100 chars
+  return clean.slice(0, 100) + (clean.length > 100 ? "..." : "");
+}
+
 export default function PaperCard({ paper }: { paper: Paper }) {
   const [expanded, setExpanded] = useState(false);
+
+  const takeaway = useMemo(
+    () => extractTakeaway(paper.summary.investment),
+    [paper.summary.investment]
+  );
 
   const formatNumber = (n: number) => {
     if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
@@ -84,6 +83,14 @@ export default function PaperCard({ paper }: { paper: Paper }) {
             </span>
           ))}
         </div>
+        {/* Investment takeaway — visible when collapsed */}
+        {!expanded && (
+          <p className="mt-3 ml-14 text-xs leading-relaxed text-[var(--color-text-muted)] line-clamp-1">
+            <span className="text-[var(--color-accent)] font-medium">투자 포인트</span>
+            <span className="mx-1.5 text-[var(--color-border)]">|</span>
+            {takeaway}
+          </p>
+        )}
       </button>
 
       {/* Expandable Content */}
