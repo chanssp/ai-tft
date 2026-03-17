@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 type Theme = "system" | "light" | "dark";
 
@@ -32,7 +32,7 @@ export default function ThemeToggle() {
     localStorage.setItem("theme", next);
   }
 
-  const icon: Record<Theme, JSX.Element> = {
+  const icon: Record<Theme, ReactNode> = {
     system: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" />
